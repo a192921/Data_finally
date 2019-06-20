@@ -1,0 +1,606 @@
+<!DOCTYPE HTML>
+
+
+
+
+
+
+<html>
+
+<head>
+    <title>資料圖像化 </title>
+
+    <meta name="_csrf_parameter" content="_csrf" />
+    <meta name="_csrf_header" content="X-CSRF-TOKEN" />
+    <meta name="_csrf" content="19b7841e-333b-439a-8a49-607ef565f2c0" />
+
+
+
+
+
+
+
+
+
+    <!-- 正式機 google 驗證使用 -->
+    <meta name="msvalidate.01" content="9982E7237F4691A851F76115F1B18BD3" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="DC.Title" content="桃園市政府資料開放平台" />
+    <meta name="DC.Subject" content="桃園市政府資料開放平台" />
+    <meta name="DC.Creator" content="桃園市政府資訊中心" />
+    <meta name="DC.Description" content="桃園市政府資料開放平台" />
+    <meta name="DC.Publisher" content="桃園市政府" />
+
+    <!-- for Google -->
+    <meta name="Title" content="桃園市政府資料開放平台" />
+    <meta name="description" content="桃園市政府資料開放平台是以開放透明、公民參與、共同協作的精神打造，目的是提高施政運作透明度，增進施政信任感；積極鼓勵在地研究、推動民間加值應用與創新服務" />
+    <meta name="keywords" content="桃園市政府資料開放平台" />
+    <meta name="author" content="桃園市政府" />
+    <meta name="copyright" content="桃園市政府" />
+    <meta name="application-name" content="Opendata" />
+    <meta property="fb:admins" content="100000329945933" />
+    <meta property="fb:app_id" content="185145591943253" />
+
+    <!-- for Facebook -->
+    <meta property="og:title" content="桃園市政府資料開放平台" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="http://127.0.0.1:8081//resources/images/logo-square-2.png" />
+    <meta property="og:image:width" content="395" />
+    <meta property="og:image:height" content="395" />
+    <meta property="og:site_name" content="開放資料, 開放桃園" />
+    <meta property="og:description" content="桃園市政府資料開放平台是以開放透明、公民參與、共同協作的精神打造，目的是提高施政運作透明度，增進施政信任感；積極鼓勵在地研究、推動民間加值應用與創新服務" />
+
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="桃園市政府資料開放平台" />
+    <meta name="twitter:description" content="桃園市政府" />
+    <meta name="twitter:image" content="http://127.0.0.1:8081//resources/images/logo-square-1.png' />" />
+
+
+
+
+
+    <!-- put other css includes here  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="/resources/css/opendata.css" />
+    <link type="text/css" rel="stylesheet" href="/resources/css/bootstrap-social.css" />
+    <link type="image/png" rel="icon" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link type="image/png" rel="icon" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link type="image/png" rel="icon" sizes="16x16" href="/favicon/favicon-16x16.png">
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <!--[if lte IE 8]><script src="/resources/js/html5shiv.js"></script><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/resources/css/ie/v8.css /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/resources/css/ie/v9.css /><![endif]-->
+
+
+</head>
+
+<body>
+    <div id="fb-root"></div>
+
+
+    </div>
+    <div class="fb-like" data-href="" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+
+
+
+
+
+
+
+
+    <!-- Numeric JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <div id="main" style="background-color: white">
+        <section class="container">
+            <div class="btn-group" role="group" aria-label="..." style="width: 100%; line-height: 4">
+                <div class="btn-group" role="group" style="margin-left: 2%">
+                    <form action="">
+                        <button id="all" type="submit" class="btn btn-lg btn-primary">
+            <i class="fa fa-bars"></i><span>土地汙染</span>
+          </button>
+                    </form>
+                </div>
+                <div class="btn-group" role="group" style="margin-left: 2%">
+                    <form action="">
+                        <input type="hidden" name="group" value="e8100188-596a-44b9-80d0-41458b21cb81" />
+                        <button id="info" type="submit" class="btn btn-lg btn-primary">
+            <i class="fa fa-bars"></i><span>酸雨</span>
+          </button>
+                    </form>
+                </div>
+                <div class="btn-group" role="group" style="margin-left: 2%">
+                    <form action="">
+                        <input type="hidden" name="group" value="8f479828-1ab6-4b29-a585-d6117d5f8223" />
+                        <button id="house" type="submit" class="btn btn-lg btn-primary">
+            <i class="fa fa-bars"></i><span>PM2.5</span>
+          </button>
+                    </form>
+                    <!--</div>
+                <div class="btn-group" role="group" style="margin-left: 2%">
+                    <form action="">
+                        <input type="hidden" name="group" value="e058256f-df7b-4a28-9b4e-6a70b73a0496" />
+                        <button id="travel" type="submit" class="btn btn-lg btn-primary">
+            <i class="fa fa-bars"></i><span>休閒旅遊</span>
+          </button>
+                    </form>
+                </div>
+                <div class="btn-group" role="group" style="margin-left: 2%">
+                    <form action="">
+                        <input type="hidden" name="group" value="a71f717e-3e28-425e-9428-2acfb5fdb3e8" />
+                        <button id="traffic" type="submit" class="btn btn-lg btn-primary">
+            <i class="fa fa-bars"></i><span>交通及通訊</span>
+          </button>
+                    </form>
+                </div>
+                <div class="btn-group" role="group" style="margin-left: 2%">
+                    <form action="">
+                        <input type="hidden" name="group" value="5f933c4f-d98a-4af3-9e7b-ff7788d58727" />
+                        <button id="security" type="submit" class="btn btn-lg btn-primary">
+            <i class="fa fa-bars"></i><span>生活安全及品質</span>
+          </button>
+                    </form>
+                </div>-->
+                </div>
+        </section>
+        <section class="container">
+            <div class="well">
+                <div id="lineChart" style="min-width: 10%; max-width: 100%; height: 60%; margin: 0 auto"></div>
+            </div>
+            <div class="well">
+                <div id="colunmChart" style="min-width: 10%; max-width: 100%; height: 60%; margin: 0 auto"></div>
+            </div>
+            <div class="well">
+                <div id="stackBarChart" style="min-width: 10%; max-width: 100%; height: 60%; margin: 0 auto"></div>
+            </div>
+            <div class="well">
+                <div id="pieChart" style="min-width: 10%; max-width: 100%; height: 60%; margin: 0 auto"></div>
+            </div>
+            <div class="well">
+                <div id="barChart" style="min-width: 10%; max-width: 100%; height: 60%; margin: 0 auto"></div>
+            </div>
+        </section>
+        </div>
+        <script>
+            if (window.location.search.length == 0) {
+                $('#all').css("background-color", "darkseagreen");
+            } else {
+                var groupId = window.location.search.split('?')[1].split('=')[1];
+                switch (groupId) {
+                    case "e8100188-596a-44b9-80d0-41458b21cb81":
+                        $('#info').css("background-color", "darkseagreen");
+                        break;
+                    case "5f933c4f-d98a-4af3-9e7b-ff7788d58727":
+                        $('#security').css("background-color", "darkseagreen");
+                        break;
+                    case "8f479828-1ab6-4b29-a585-d6117d5f8223":
+                        $('#house').css("background-color", "darkseagreen");
+                        break;
+                    case "e058256f-df7b-4a28-9b4e-6a70b73a0496":
+                        $('#travel').css("background-color", "darkseagreen");
+                        break;
+                    case "a71f717e-3e28-425e-9428-2acfb5fdb3e8":
+                        $('#traffic').css("background-color", "darkseagreen");
+                        break;
+                }
+            }
+
+            var threeStarCount = [];
+            var normalCount = [];
+            var orgName = [];
+            for (var a in {
+                    "datasetOrgCountfive": ["衛生局", 114, 0],
+                    "datasetOrgCountone": ["地方稅務局", 169, 0],
+                    "datasetOrgCountsix": ["都市發展局", 102, 0],
+                    "datasetOrgCounttwo": ["地政局", 160, 0],
+                    "datasetOrgCountfour": ["消防局", 119, 0],
+                    "datasetOrgCountnine": ["經濟發展局", 60, 0],
+                    "datasetOrgCountthree": ["警察局", 122, 0],
+                    "datasetOrgCounteight": ["社會局", 80, 0],
+                    "datasetOrgCountseven": ["主計處", 81, 0],
+                    "datasetOrgCountten": ["環境保護局", 49, 2]
+                }) {
+                orgName.push({
+                    "datasetOrgCountfive": ["衛生局", 114, 0],
+                    "datasetOrgCountone": ["地方稅務局", 169, 0],
+                    "datasetOrgCountsix": ["都市發展局", 102, 0],
+                    "datasetOrgCounttwo": ["地政局", 160, 0],
+                    "datasetOrgCountfour": ["消防局", 119, 0],
+                    "datasetOrgCountnine": ["經濟發展局", 60, 0],
+                    "datasetOrgCountthree": ["警察局", 122, 0],
+                    "datasetOrgCounteight": ["社會局", 80, 0],
+                    "datasetOrgCountseven": ["主計處", 81, 0],
+                    "datasetOrgCountten": ["環境保護局", 49, 2]
+                }[a][0]);
+                threeStarCount.push({
+                    "datasetOrgCountfive": ["衛生局", 114, 0],
+                    "datasetOrgCountone": ["地方稅務局", 169, 0],
+                    "datasetOrgCountsix": ["都市發展局", 102, 0],
+                    "datasetOrgCounttwo": ["地政局", 160, 0],
+                    "datasetOrgCountfour": ["消防局", 119, 0],
+                    "datasetOrgCountnine": ["經濟發展局", 60, 0],
+                    "datasetOrgCountthree": ["警察局", 122, 0],
+                    "datasetOrgCounteight": ["社會局", 80, 0],
+                    "datasetOrgCountseven": ["主計處", 81, 0],
+                    "datasetOrgCountten": ["環境保護局", 49, 2]
+                }[a][1]);
+                normalCount.push({
+                    "datasetOrgCountfive": ["衛生局", 114, 0],
+                    "datasetOrgCountone": ["地方稅務局", 169, 0],
+                    "datasetOrgCountsix": ["都市發展局", 102, 0],
+                    "datasetOrgCounttwo": ["地政局", 160, 0],
+                    "datasetOrgCountfour": ["消防局", 119, 0],
+                    "datasetOrgCountnine": ["經濟發展局", 60, 0],
+                    "datasetOrgCountthree": ["警察局", 122, 0],
+                    "datasetOrgCounteight": ["社會局", 80, 0],
+                    "datasetOrgCountseven": ["主計處", 81, 0],
+                    "datasetOrgCountten": ["環境保護局", 49, 2]
+                }[a][2]);
+            }
+
+            Highcharts.setOptions({
+                colors: ['#058DC7', '#50B432', '#DDDF00', '#ED561B', '#24CBE5', '#64E572', '#FF9655', '#6AF9C4']
+            });
+
+            //時間區間資料集數量折線圖
+            var month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+            var display = [];
+            var monthIndex = 5;
+            for (var i = 0; i < 12; i++) {
+                display.push(month[monthIndex % 12]);
+                monthIndex++;
+            }
+
+            Highcharts.chart('lineChart', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: '折線圖(以時間區隔)'
+                },
+                xAxis: {
+                    categories: display
+                },
+                yAxis: {
+                    title: {
+                        text: '降雨量(毫升)'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: '桃園站',
+                    data: [1246, 1257, 1200, 1301, 1365, 1330, 1350, 1350, 1300, 1401, 1402, 1405]
+                }, {
+                    name: '龜山站',
+                    data: [600, 1005, 1288, 1001, 980, 1330, 800, 1300, 1354, 1457, 1293, 953]
+                }, {
+                    name: '龍潭站',
+                    data: [1336, 1347, 1378, 1392, 1418, 1421, 1441, 1441, 1445, 1492, 1493, 1496]
+                }]
+            });
+
+            //下載、瀏覽、API介接次數統計長條圖
+            Highcharts.chart('colunmChart', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '長條圖'
+                },
+                xAxis: {
+                    categories: [
+                        'pH<5',
+                        'pH<6',
+                        'pH<7',
+
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '次數'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: '過去一周',
+                    data: [{
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.weekDownloadCount, {
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.weekViewCount, {
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.weekApiCount]
+
+                }, {
+                    name: '過去一個月',
+                    data: [{
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.monthDownloadCount, {
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.monthViewCount, {
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.monthApiCount]
+
+                }, {
+                    name: '總數',
+                    data: [{
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.totalDownloadCount, {
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.totalViewCount, {
+                        "total": {
+                            "weekApiCount": 193174,
+                            "totalViewCount": 839755,
+                            "monthApiCount": 961156,
+                            "totalDownloadCount": 10389853,
+                            "monthViewCount": 23453,
+                            "monthDownloadCount": 266083,
+                            "weekViewCount": 5789,
+                            "totalApiCount": 59509617,
+                            "weekDownloadCount": 61317
+                        }
+                    }.total.totalApiCount],
+                    visible: false,
+
+                }]
+            });
+
+            //資料格式圓餅圖
+            Highcharts.chart('pieChart', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: '土壤酸化比例'
+                },
+                tooltip: {
+                    pointFormat: '比例: <b>{point.y}</b><br><b>{point.percentage:.1f} %</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: [{
+                        name: '正常',
+                        y: 1294,
+                        sliced: true,
+                        selected: true
+                    }, {
+                        name: '1(6<pH<7)',
+                        y: 47,
+                    }, {
+                        name: '1(5<pH<6)',
+                        y: 72
+                    }, {
+                        name: '1(4<pH<5)',
+                        y: 118
+                    }]
+                }]
+            });
+        </script>
+    </div>
+
+
+
+
+
+
+    <!-- put other javascript includes here  -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+
+    <script async type="text/javascript" src="/resources/js/paging.js"></script>
+    <script async type="text/javascript" src="/resources/js/print.js"></script>
+
+    <script language="JavaScript">
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+        $(document).ready(function() {
+            $(".homepage").delegate(".search-submit", "click", function() {
+                $("#searchForm > input[type=text]").val($(this).val());
+                $("#searchForm").submit();
+            });
+        });
+
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-61308312-3', 'auto');
+        ga('send', 'pageview');
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1797729650447094";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        jQuery(function($) {
+            // 讓 ajax 不要被 jquery cache
+            jQuery.ajaxSetup({
+                cache: false,
+                traditional: true,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+    <style id="style-post">
+        .fb-like {
+            position: fixed;
+            bottom: 60px;
+            z-index: 2000;
+            left: 20px;
+        }
+        
+        blockquote:hover {
+            border-left: 5px solid #1b809e;
+        }
+        
+        .blockquote-reverse:hover {
+            border-left: 0;
+            border-right: 5px solid #1b809e;
+        }
+    </style>
+</body>
+
+</html>
+<script>
+    $(document).ready(function() {
+        var top_len = $('#top').height();
+        $("div.page-wrap").css("margin-top", top_len);
+        $(window).resize(function() {
+            top_len = $('#top').height();
+            $("div.page-wrap").css("margin-top", top_len);
+        });
+    });
+</script>
